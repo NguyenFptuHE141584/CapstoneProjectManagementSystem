@@ -16,11 +16,6 @@
 # Mono auto generated files
 mono_crash.*
 
-*.ispac
-*.dbmdl
-*.rptproj.use
-
-
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
