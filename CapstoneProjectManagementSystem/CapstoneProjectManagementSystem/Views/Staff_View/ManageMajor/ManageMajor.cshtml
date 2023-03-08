@@ -1,0 +1,84 @@
+﻿@{
+    Layout = "/Views/Shared/Staff/_LayoutStaff.cshtml";
+    ViewData["Title"] = "Manage Major Page";
+}
+<link rel="stylesheet" href="/css/staff/staff_manageMajor.css">
+<div class="homepage" id="manageMajor">
+    <div class="editSpe">
+        @await Html.PartialAsync("/Views/Shared/Staff/_LayoutSidebarLeftStaff.cshtml")
+        <div class="main">
+            @{var countPro = 1;
+                var countSpe = 1;}
+            <p class="titlePage">Manage Profession</p>
+            <div class="addPro">
+                <div id="createPro">
+                    @foreach (var pro in ViewBag.professionList)
+                    {
+                        <div class="create">
+                            @*Profession*@
+                            <button class="editPro" id="editPro_@countPro"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
+                            <button class="savePro hide-btn" id="savePro_@countPro"><i class="fa-solid fa-floppy-disk"></i>Save</button>
+                            @*<button class="deletePro" id="deletePro_@countPro"><i class="fa-solid fa-trash"></i>Delete</button>*@
+                            <div class="pro" id="pro_@countPro">
+                                <div class="pro__left">
+                                    <p class="title">Profession</p>
+                                    <div class="pro__left--info">
+                                        <input type="hidden" value="@pro.ProfessionID" id="proId_@countPro" />
+                                        <div class="info--left">
+                                            <p class="smallTitle">Abbreviation</p>
+                                            <input class="introInput" type="text" value="@pro.ProfessionAbbreviation" id="proAbbre_@countPro">
+                                        </div>
+                                        <div class="info--right">
+                                            <p class="smallTitle">Fullname</p>
+                                            <input type="text" class="introInput" value="@pro.ProfessionFullName" id="proFull_@countPro">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pro__right">
+                                    <p class="title">Specialty</p>
+                                    <div class="pro__right--info" id="showSpe_@countPro">
+                                        @if (pro.Specialties != null)
+                                        {
+                                            @foreach (var spec in pro.Specialties)
+                                            {
+                                                @*Specialty*@
+                                        <div class="infoInput" id="infoInput_@countSpe">
+                                            <input type="hidden" value="@spec.SpecialtyID" id="speId_@countSpe" />
+                                            <div class="info--abbrev">
+                                                <p class="smallTitle">Abbreviation</p>
+                                                <input type="text" class="introInput" value="@spec.SpecialtyAbbreviation" id="speAbbre_@countSpe">
+                                            </div>
+                                            <div class="info--fullname">
+                                                <p class="smallTitle">Fullname</p>
+                                                <input type="text" class="introInput" value="@spec.SpecialtyFullName" id="speFull_@countSpe">
+                                            </div>
+                                            <div class="info--maxMember">
+                                                <p class="smallTitle">Max Member</p>
+                                                <input type="number" class="introInput" value="@spec.MaxMember" id="speMaxMem_@countSpe">
+                                            </div>
+                                            <div class="info--maxMember">
+                                                <p class="smallTitle">Code</p>
+                                                <input type="text" class="introInput" value="@spec.CodeOfGroupName" id="speCode_@countSpe">
+                                            </div>
+                                            @*<button class="deleteSpe hide-btn" id="deleteSpe_@countSpe"><i class="fa-solid fa-trash"></i></button>*@
+                                        </div>
+                                                countSpe++;
+                                            }
+                                        }
+                                    </div>
+                                    <button class="addSpe hide-btn" id="@countPro"><i class="fa-solid fa-plus"></i>Add Specialty</button>
+                                </div>
+                            </div>
+                        </div>
+                        countPro++;
+                    }
+                </div>
+                <button id="addPro"><i class="fa-solid fa-plus"></i>Add Profession</button>
+                @*pass profession and specialty count to js*@
+                <input type="hidden" id="passToJs2" value="@countSpe" />
+                <input type="hidden" id="passToJs1" value="@countPro" />
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/staff/staff_manageMajor.js"></script>

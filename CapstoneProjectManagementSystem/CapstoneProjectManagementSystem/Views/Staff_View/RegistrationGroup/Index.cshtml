@@ -1,0 +1,215 @@
+﻿@{
+    Layout = "/Views/Shared/Staff/_LayoutStaff.cshtml";
+    ViewData["Title"] = "Manage GroupRegistration Page";
+}
+<link rel="stylesheet" href="/css/staff/staff_registrationGroup.css">
+<link rel="stylesheet" href="/css/staff/staff_showDetailRegistrationGroup.css">
+<div class="homepage" id="registrationGroup">
+    <div class="registrationForm">
+        @await Html.PartialAsync("/Views/Shared/Staff/_LayoutSidebarLeftStaff.cshtml")
+        <div class="main">
+            <p>Manage Group Registration</p>
+            <div class="registHeader">
+                <div class="chooseTypeRequest">
+                    <button class="requestPendingBtn active" id="requestPendingBtn">Request Pending</button>
+                    <button class="requestAcceptedBtn" id="requestAcceptedBtn">Request Accepted</button>
+                    <button class="requestRejectedBtn" id="requestRejectedBtn">Request Rejected</button>
+                </div>
+                <div class="searchRequest">
+                    <div class="searchNameRequest">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" name="" id="searchNameRequestInput" placeholder="Search by name">
+                    </div>
+                </div>
+            </div>
+            <div class="requestMain">
+                <div class="pagination">
+                    <a href="#" id="previousBtn"><i class="fa-solid fa-angle-left"></i></a>
+                    <div class="numPage">
+                        <p class="number" id="pagingCount">1 - 5 in 17 results</p>
+                    </div>
+                    <a href="#" id="nextbtn"><i class="fa-solid fa-angle-right"></i></a>
+                </div>
+            </div>
+            <div class="acceptedMain hide--list">
+                @*<div class="pagination">
+                <a href="#"><i class="fa-solid fa-angle-left"></i></a>
+                <div class="numPage">
+                <a href="#" class="number paginationactive">1</a>
+                <a href="#" class="number">2</a>
+                <a href="#" class="number">3</a>
+                <a href="#" class="number">...</a>
+                <a href="#" class="number">12</a>
+                </div>
+                <a href="#"><i class="fa-solid fa-angle-right"></i></a>
+                </div>*@
+            </div>
+            <div class="rejectedMain hide--list">
+                <div class="informRequest">
+                    <div class="displayRejectedForm">
+                        <p>1</p>
+                        <p class="nameProjectRequest">UNZIPPED - Sex Education Application</p>
+                        <p>Software Engineering</p>
+                        <div class="supervisor">
+                            <p>Phan Trường Lâm</p>
+                            <p>Trần Đình Trí</p>
+                        </div>
+                    </div>
+                    <p class="rejectStatus">Rejected</p>
+                    <p class="reason">Yêu cầu chỉnh sửa lại nội dung của nhóm đừng làm linh tinh</p>
+                </div>
+                @*<div class="pagination">
+                <a href="#"><i class="fa-solid fa-angle-left"></i></a>
+                <div class="numPage">
+                <a href="#" class="number paginationactive">1</a>
+                <a href="#" class="number">2</a>
+                <a href="#" class="number">3</a>
+                <a href="#" class="number">...</a>
+                <a href="#" class="number">12</a>
+                </div>
+                <a href="#"><i class="fa-solid fa-angle-right"></i></a>
+                </div>*@
+            </div>
+        </div>
+        <div class="showForm hide-form">
+            <div class="formSubmitRegistration">
+                <div class="closeFormBtn">
+                    <i class="fa-solid fa-x"></i>
+                </div>
+                <p class="formName">Team Registration</p>
+                <div class="form">
+                    <div class="informGroup">
+                        <div class="introGroup">
+                            <div class="nameProject">
+                                <img src="../img/image3.jpg" alt="">
+                                <div class="inforProject">
+                                    <p>Call4Project</p>
+                                    <p>Create at: <span>Nov 3, 2022</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="someInforms">
+                            <div class="someInforms--left">
+                                 <div class="vietnamTitle">
+                                    <p class="title">Vietnamese Title</p>
+                                    <p class="content">Phần mềm quản lý đồ án</p>
+                                </div>
+                               
+                                 <div class="professional">
+                                    <p class="title">Professional</p>
+                                    <p class="content">Software Engineer</p>
+                                </div>
+                            </div>
+                            <div class="someInforms--right">
+                                <div class="abbreviations">
+                                    <p class="title">Abbreviations</p>
+                                    <p class="content">CPM</p>
+                                </div>
+                                <div class="specialty">
+                                    <p class="title">Specialty</p>
+                                    <p class="content">Web Development</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="supervisorInspect">
+                            <p class="title">Supervisor Wishes</p>
+                            <div class="supervisorName">
+                                <div class="supervisorInform">
+                                    <p class="titleSupervisor">Supervisor 1</p>
+                                    <div class="basicInformSupervisor" id="basicInformSupervisor1">
+                                        <div class="inputInformSupervisor">
+                                            <p>Full Name</p>
+                                            <p>Trinh Minh Nhat</p>
+                                        </div>
+                                        <div class="inputInformSupervisor">
+                                            <p>Phone Number</p>
+                                            <p>0123456789</p>
+                                        </div>
+                                        <div class="inputInformSupervisor">
+                                            <p>Email</p>
+                                            <p>nhattmhe141446@fpt.edu.vn</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="supervisorInform">
+                                    <p class="titleSupervisor">Supervisor 2</p>
+                                    <div class="basicInformSupervisor" id="basicInformSupervisor2">
+                                        <div class="inputInformSupervisor">
+                                            <p>Full Name</p>
+                                            <p>Trinh Minh Nhat</p>
+                                        </div>
+                                        <div class="inputInformSupervisor">
+                                            <p>Phone Number</p>
+                                            <p>0123456789</p>
+                                        </div>
+                                        <div class="inputInformSupervisor">
+                                            <p>Email</p>
+                                            <p>nhattmhe141446@fpt.edu.vn</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentStudent">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showMember">
+                        <p class="title">Members</p>
+                        <div class="numMember">
+                            <p>Total: <span>6 memmbers</span></p>
+                        </div>
+                        <div class="members">
+                            @*<div class="showInfomember" id="leaderInfor">
+                            <div class="info">
+                            <img src="../img/images (2).jfif" alt="">
+                            <div class="memInfo">
+                            <a href="#">nhattmhe141446@gmail.com</a>
+                            <p>Software Engineer</p>
+                            </div>
+                            </div>
+                            <div class="role">
+                            <p>Owner | Leader</p>
+                            </div>
+                            </div>*@
+                            <div class="showInfomember" id="memberinfor">
+                                <div class="info">
+                                    <img src="../img/images (2).jfif" alt="">
+                                    <div class="memInfo">
+                                        <a href="#">thuylthe141447@gmail.com</a>
+                                        <p>Software Engineer</p>
+                                    </div>
+                                </div>
+                                <div class="role">
+                                    <p>Member</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="commentReject hide-form">
+            <div class="popup">
+                <p>Give to reasons for reject this request to change the topic?</p>
+                <textarea name="" id="textAreaComent" cols="60" rows="8" placeholder="Write your reason here..."></textarea>
+                <p class="showErrorMessage" id="showErrorMessageCommentReject"></p>
+                <div class="button">
+                    <button class="submitBtn" id="reject1Btn" disabled>Submit</button>
+                    <button class="closeBtn">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="showFormConfirm hide-form">
+            <div class="formRequestConfirm">
+                <p class="formNameConfirm">
+                    Do you want to accept this group's registration?
+                </p>
+                <div class="btnSubmitConfirm">
+                    <button class="submitBtn" id="submitBtn">Submit</button>
+                    <button class="discardBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/staff/staff_registrationGroup.js"></script>

@@ -1,0 +1,139 @@
+﻿@{
+    Layout = "/Views/Shared/Staff/_LayoutStaff.cshtml";
+    ViewData["Title"] = "Manage ChangeTopic Page";
+}
+<link rel="stylesheet" href="~/css/staff/staff_manageChangTopic.css" />
+<div class="homepage" id="manageChangeTopic">
+    @await Html.PartialAsync("/Views/Shared/Staff/_LayoutSidebarLeftStaff.cshtml")
+    <div class="main">
+        <p>List Request Change Topic</p>
+        <div class="requestHeader">
+            <div class="chooseTypeRequest">
+                <button class="requestPendingBtn active" id="requestPendingBtn">Request Pending</button>
+                <button class="requestAcceptedBtn" id="requestAcceptedBtn">Request Accepted</button>
+                <button class="requestRejectedBtn" id="requestRejectedBtn">Request Rejected</button>
+            </div>
+            <div class="searchRequest">
+                <div class="searchNameRequest">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="" id="searchNameRequestInput" placeholder="Search by name">
+                </div>
+            </div>
+        </div>
+        <div class="showRequestTopic">
+        </div>
+        <div class="showRequestAccepted hide-form">
+        </div>
+        <div class="showRequestRejected hide-form">
+        </div>
+    </div>
+    <div class="showDetailRequest hide-form">
+        <div class="popup">
+            <p>Change Topic Form</p>
+            <div class="changeTopic">
+                <div class="oldTopicRequest">
+                    <p>Old Topic</p>
+                    <div class="oldTopic">
+                        <p><span>English Name:</span><b>Capstone Project Management System</b></p>
+                        <p><span>VietNamese Name:</span><b>Hệ thống quản lý đồ án tốt nghiệp</b></p>
+                        <p><span>Abbreviation:</span><b>CPSM</b></p>
+                    </div>
+                </div>
+                <div class="newTopicRequest">
+                    <p>New Topic</p>
+                    <div class="newTopic">
+                        <p><span>English Name:</span><b>Capstone Project Management System</b></p>
+                        <p><span>VietNamese Name:</span><b>Hệ thống quản lý đồ án tốt nghiệp</b></p>
+                        <p><span>Abbreviation:</span><b>CPSM</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="emailSupervisorRequest">
+                <p class="titleRequest">Email Supervisor: </p>
+                <p>LamPT2@fe.edu.vn</p>
+            </div>
+            <div class="reasonChangeRequest">
+                <p class="titleRequest">Reason Change Topic: </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sapiente et culpa aut, quaerat
+                    voluptatibus non, ea distinctio animi dolorum tempore quia facilis voluptate sit porro odio
+                    sequi totam voluptatem?
+                </p>
+            </div>
+            <div class="button">
+                <button class="closeFormDetailBtn">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="showDetailRejectedRequest hide-form">
+        <div class="popup">
+            <p>Change Topic Form</p>
+            <div class="changeTopic">
+                <div class="oldTopicRequest">
+                    <p>Old Topic</p>
+                    <div class="oldTopic">
+                        <p><span>English Name:</span><b>Capstone Project Management System</b></p>
+                        <p><span>VietNamese Name:</span><b>Hệ thống quản lý đồ án tốt nghiệp</b></p>
+                        <p><span>Abbreviation:</span><b>CPSM</b></p>
+                    </div>
+                </div>
+                <div class="newTopicRequest">
+                    <p>New Topic</p>
+                    <div class="newTopic">
+                        <p><span>English Name:</span><b>Capstone Project Management System</b></p>
+                        <p><span>VietNamese Name:</span><b>Hệ thống quản lý đồ án tốt nghiệp</b></p>
+                        <p><span>Abbreviation:</span><b>CPSM</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="emailSupervisorRequest">
+                <p class="titleRequest">Email Supervisor: </p>
+                <p>LamPT2@fe.edu.vn</p>
+            </div>
+            <div class="reasonChangeRequest">
+                <p class="titleRequest">Reason Change Topic: </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sapiente et culpa aut, quaerat
+                    voluptatibus non, ea distinctio animi dolorum tempore quia facilis voluptate sit porro odio
+                    sequi totam voluptatem?
+                </p>
+            </div>
+            <div class="reasonReject">
+                <p class="titleRequest">Reason Reject: </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sapiente et culpa aut, quaerat
+                    voluptatibus non, ea distinctio animi dolorum tempore quia facilis voluptate sit porro odio
+                    sequi totam voluptatem?
+                </p>
+            </div>
+            <div class="button">
+                <button class="closeFormDetailRejectBtn">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="showFormCommentReject hide-form">
+        <div class="popupCommentReject">
+            <p>Give to reasons for reject this request to change the topic?</p>
+            <textarea name="" id="textAreaComent" cols="60" rows="9" placeholder="Write your reason here..."></textarea>
+            <p class="showErrorMessage" id="showErrorMessageCommentReject"></p>
+            <div class="button">
+                <button class="rejectFormBtn" disabled>Submit</button>
+                <button class="closeBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="showFormConfirm hide-form">
+        <div class="formRequestConfirm">
+            <p class="formNameConfirm">
+                Do you want to accept this request change topic?
+            </p>
+            <div class="btnSubmitConfirm">
+                <button class="submitBtn">Submit</button>
+                <button class="discardBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/staff/staff_manageChangeTopic.js"></script>
+
+

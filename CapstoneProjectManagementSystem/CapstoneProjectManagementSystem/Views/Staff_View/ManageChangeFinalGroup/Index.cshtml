@@ -1,0 +1,115 @@
+﻿@{
+    Layout = "/Views/Shared/Staff/_LayoutStaff.cshtml";
+    ViewData["Title"] = "Manage ChangeMember Page";
+}
+<link rel="stylesheet" href="/css/staff/staff_manageChangeFinalGroup.css">
+<div class="homepage" id="manageChangeFinalGroup">
+    @await Html.PartialAsync("/Views/Shared/Staff/_LayoutSidebarLeftStaff.cshtml")
+    <div class="main">
+        <p>Manage Change Group</p>
+        <div class="requestHeader">
+            <div class="chooseTypeRequest">
+                <button class="requestPendingBtn active" id="requestPendingBtn">Request Pending</button>
+                <button class="requestAcceptedBtn" id="requestAcceptedBtn">Request Accepted</button>
+                <button class="requestRejectedBtn" id="requestRejectedBtn">Request Rejected</button>
+            </div>
+            <div class="searchRequest">
+                <div class="searchNameRequest">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="" id="searchNameRequestInput" placeholder="Search by name">
+                </div>
+            </div>
+        </div>
+        <div class="showMemberRequest">
+            <div class="title">
+                <p>No.</p>
+                <p>From Group</p>
+                <p>From Email</p>
+                <p>To Group</p>
+                <p>To Email</p>
+                <p>Action</p>
+            </div>
+            @*<div class="pagination">
+            <a href="#"><i class="fa-solid fa-angle-left"></i></a>
+            <div class="numPage">
+            <a href="#" class="number paginationactive">1</a>
+            <a href="#" class="number">2</a>
+            <a href="#" class="number">3</a>
+            <a href="#" class="number">...</a>
+            <a href="#" class="number">12</a>
+            </div>
+            <a href="#"><i class="fa-solid fa-angle-right"></i></a>
+            </div>*@
+        </div>
+        <div class="showRequestReject hide-form">
+            <div class="titleRequestReject">
+                <p>No.</p>
+                <p>From Group</p>
+                <p>From Email</p>
+                <p>To Group</p>
+                <p>To Email</p>
+                <p>Status</p>
+                <p>Staff Comment</p>
+            </div>
+            @*<div class="pagination">
+            <a href="#"><i class="fa-solid fa-angle-left"></i></a>
+            <div class="numPage">
+            <a href="#" class="number paginationactive">1</a>
+            <a href="#" class="number">2</a>
+            <a href="#" class="number">3</a>
+            <a href="#" class="number">...</a>
+            <a href="#" class="number">12</a>
+            </div>
+            <a href="#"><i class="fa-solid fa-angle-right"></i></a>
+            </div>*@
+        </div>
+        <div class="showRequestAccept hide-form">
+            <div class="title">
+                <p>No.</p>
+                <p>From Group</p>
+                <p>From Email</p>
+                <p>To Group</p>
+                <p>To Email</p>
+                <p>Action</p>
+            </div>
+
+            @*<div class="pagination">
+            <a href="#"><i class="fa-solid fa-angle-left"></i></a>
+            <div class="numPage">
+            <a href="#" class="number paginationactive">1</a>
+            <a href="#" class="number">2</a>
+            <a href="#" class="number">3</a>
+            <a href="#" class="number">...</a>
+            <a href="#" class="number">12</a>
+            </div>
+            <a href="#"><i class="fa-solid fa-angle-right"></i></a>
+            </div>*@
+        </div>
+    </div>
+    <div class="commentReject hide-form">
+        <div class="popup">
+            <p>Give to reasons for reject this request to change group?</p>
+            <textarea name="" id="textAreaComent" cols="60" rows="9" placeholder="Write your reason here..."></textarea>
+            <p class="showErrorMessage" id="showErrorMessageCommentReject"></p>
+            <div class="button">
+                <button class="rejectRequestConfirmBtn" disabled>Submit</button>
+                <button class="cancelFormRejectRequestBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="showAcceptRequestConfirm hide-form">
+        <div class="formRequestConfirm">
+            <p class="formNameConfirm">
+                Do you want to accept this request?
+            </p>
+            <div class="btnAcceptConfirm">
+                <button class="acceptRequestConfirmBtn">Submit</button>
+                <button class="cancelAcceptRequestConfirmBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/staff/staff_manageChangeFinalGroup.js"></script>
+
+
+

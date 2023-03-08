@@ -1,0 +1,163 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+#support {
+    display: flex;
+    height: auto;
+}
+
+.sidebar--left {
+    flex-basis: 15%;
+    height: 93vh;
+    border: none;
+    left: 0;
+    overflow-x: hidden;
+    position: sticky;
+    top: 0;
+}
+
+.main {
+    height: auto;
+    flex-basis: 85%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(116, 112, 233, 0.05);
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.titlePage {
+    margin: 16px 20px;
+    color: #1C1F27;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.formSupport {
+    display: flex;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 20px;
+    flex-direction: column;
+}
+
+.formTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #7470E9;
+    margin: 32px 0 8px 0;
+}
+
+.formDes {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+
+.formContent {
+    display: flex;
+}
+
+.titleSupport {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+    .titleSupport > span {
+        color: red;
+        margin-left: 4px;
+    }
+
+input {
+    width: 60em;
+    height: 48px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid rgba(28, 31, 39, 0.3);
+    padding: 20px 16px 20px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+    input:focus {
+        border: 1px solid rgb(64, 77, 255);
+    }
+
+textarea {
+    width: 60em;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid rgba(28, 31, 39, 0.3);
+    padding: 20px 16px 20px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    resize: none;
+}
+
+    textarea:focus {
+        border: 1px solid rgb(64, 77, 255);
+    }
+
+#errorinputTitle, #errordesSupportForm {
+    font-size: 16px;
+    font-weight: 600;
+    color: #F74055;
+    margin-bottom: 20px;
+}
+
+.formContent__right {
+    margin-left: 15em;
+}
+
+.formBtn {
+    text-align: center;
+}
+
+.submitFormBtn {
+    cursor: pointer;
+    width: 15em;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #7470E9;
+    color: #FFFFFF;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.formSupport {
+    display: flex;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 20px;
+    flex-direction: column;
+}
+
+
+@media only screen and (max-width: 1440px) {
+    .formContent__right {
+        margin-left: 2em;
+    }
+
+    input {
+        width: 48em;
+    }
+
+    textarea {
+        width: 48em;
+    }
+}

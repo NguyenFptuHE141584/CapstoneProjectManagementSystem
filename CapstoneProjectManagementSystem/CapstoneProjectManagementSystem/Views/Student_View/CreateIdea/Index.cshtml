@@ -1,0 +1,105 @@
+﻿@{
+    Layout = "/Views/Shared/Student/_LayoutStudent.cshtml";
+    ViewData["Title"] = "CreateIdea Page";
+}
+@using CapstoneProjectManagementSystem.Models
+<link rel="stylesheet" href="/css/student/student_formCreateIdea.css">
+<div class="homepage" id="createIdea">
+    @await Html.PartialAsync("/Views/Shared/Student/_LayoutSidebarLeftStudent.cshtml")
+    <div class="main">
+        <div class="showForm">
+            <div class="formCreateNew">
+                <p class="formName">Create New Project</p>
+                <p id="notiWhenCreate" style="color:red"></p>
+                <div class="form">
+                    <div class="categorize">
+                        <p>How Would You Classify This Project?</p>
+                        <div class="selectedSpe">
+                            <div class="selectedSpe--left">
+                                <p>Profession <span>*</span></p>
+                                <div class="dropdownSpe">
+                                    <select class="professionDDL" id="professionDDL" required>
+                                        <option value="0" selected="selected">Profession</option>
+                                        @foreach (var item in ViewBag.ProfessionList)
+                                        {
+                                            <option value="@item.ProfessionID">@item.ProfessionFullName</option>
+                                        }
+                                    </select>
+                                    <span id="errorprofessionDDL"></span>
+                                </div>
+                            </div>
+                            <div class="selectedSpe--right">
+                                <p>Specialty <span>*</span></p>
+                                <div class="dropdownSpe">
+                                    <select value="0" selected="selected" id="specialtyDDL" required>
+                                        <option value="0">Specialty</option>
+                                    </select>
+                                    <span id="errorspecialtyDDL"></span>
+                                </div>
+                            </div>
+                            <div class="englishTitle">
+                                <p class="titleForm">English Title <span>*</span></p>
+                                <input id="txtEnglishTitle" class="inputContent" type="text" placeholder="What's your idea?" required>
+                                <span id="errortxtEnglishTitle"></span>
+                            </div>
+
+                            <div class="shortTitle">
+                                <p>Do you know a short title can help you quickly catch attention?</p>
+                                <div class="shortTitle--ele">
+                                    <p class="titleForm">Abbreviations for Title <span>*</span></p>
+                                    <input id="txtShortTitle" class="inputContent" type="text"
+                                           placeholder="Enter the abbreviations for your title" required>
+                                    <span id="errortxtShortTitle"></span>
+                                </div>
+                                <div class="shortTitle--ele">
+                                    <p class="titleForm">Vietnamese Title <span>*</span></p>
+                                    <input id="txtVietNameseTitle" class="inputContent" type="text"
+                                           placeholder="What's your idea in Vietnamese?" required>
+                                    <span id="errortxtVietNameseTitle"></span>
+                                </div>
+
+                                <div class="shortTitle--ele">
+                                    <p class="titleForm">Description <span>*</span></p>
+                                    <textarea name="desDetail" id="desDetail" cols="50" rows="4"
+                                              placeholder="Describe your idea" required></textarea>
+                                    <span id="errordesDetail"></span>
+                                </div>
+                                <div class="shortTitle--ele">
+                                    <p class="titleForm">Project Tags (Up to 10)</p>
+                                    <ul class="addTag">
+                                        <input id="inputTag" type="text" spellcheck="false" placeholder="Input then press enter to add tags" required />
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="member">
+                                <p class="titleForm">Team Members</p>
+                                <p>Existed Members</p>
+                                <div class="existMem" id="existMember">
+                                    <div class="nameMem">
+                                        <p hidden id="studentId">@ViewBag.Student.StudentID</p>
+                                        <img id="avatar" src="@ViewBag.Student.User.Avatar" alt="Avatar">
+                                        <p id="fptEmail">@ViewBag.Student.User.FptEmail</p>
+                                    </div>
+                                    <p>Owner</p>
+                                </div>
+                            </div>
+                            <div class="addMem">
+                                <p id="abc" class="titleForm">Invite</p>
+                                <div class="addnewMem">
+                                    <input type="text" id="txtMember" placeholder="Example@fpt.edu.vn">
+                                    <div id="btnAdd">Invite</div>
+                                </div>
+                                <p id="noti" style="color:red"></p>
+                            </div>
+                            <div class="buttonCreate">
+                                <button type="submit" id="btnCreate" class="btnCre">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/student/student_formCreateIdea.js"></script>
+

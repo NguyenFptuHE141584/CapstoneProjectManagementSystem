@@ -1,0 +1,78 @@
+﻿@{
+    Layout = "/Views/Shared/Staff/_LayoutStaff.cshtml";
+    ViewData["Title"] = "Manage Support Request";
+}
+<link rel="stylesheet" href="/css/staff/staff_manageSupport.css">
+<div class="homepage" id="support">
+    @await Html.PartialAsync("/Views/Shared/Staff/_LayoutSidebarLeftStaff.cshtml")
+    <div class="main">
+        <p class="titlePage">Support Request</p>
+        <div class="requestHeader">
+            <button class="showRequestbtn" id="showRequestbtn">Show Request</button>
+            @*<div class="searchRequest">
+                <div class="searchNameRequest">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="" id="searchNameRequestInput" placeholder="Search by name">
+                </div>
+            </div>*@
+        </div>
+
+        @if (ViewBag.pendingList != null || ViewBag.processedList != null)
+        {
+            <div class="requestMain">
+                <div class="titleRequest">
+                    <p>No.</p>
+                    <p>Email</p>
+                    <p>Phone Number</p>
+                    <p>Title</p>
+                    <p>Description</p>
+                    <p>Action</p>
+                </div>
+                @{
+                    var count = 0;
+                }
+                @if (ViewBag.pendingList != null)
+                {
+                    @foreach (var item in ViewBag.pendingList)
+                    {
+                        count++;
+                        <div class="informSupportRequest">
+                            <p>@count</p>
+                            <p>@item.Student.StudentID</p>
+                            <p>@item.PhoneNumber</p>
+                            <p>@item.Title</p>
+                            <p>@item.SupportMessge</p>
+                            <div class="changesStatusBtn" id="div_@item.SupportID">
+                                <button class="changeBtn" id="@item.SupportID">Mark As Processed</button>
+                            </div>
+                        </div>
+                    }
+                }
+                @if (ViewBag.processedList != null)
+                {
+                    @foreach (var item in ViewBag.processedList)
+                    {
+                        count++;
+                        <div class="informSupportRequest">
+                            <p>@count</p>
+                            <p>@item.Student.StudentID</p>
+                            <p>@item.PhoneNumber</p>
+                            <p>@item.Title</p>
+                            <p>@item.SupportMessge</p>
+                            <div class="changesStatusBtn" id="div_@item.SupportID">
+                                <p class="processedStatus">Processed</p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+        else
+        {
+            <div class="requestMain" style="text-align:center">
+                <h2 style="color:red">Nothing to display.</h2>
+            </div>
+        }
+    </div>
+</div>
+<script src="/js/staff/staff_manageSupport.js"></script>

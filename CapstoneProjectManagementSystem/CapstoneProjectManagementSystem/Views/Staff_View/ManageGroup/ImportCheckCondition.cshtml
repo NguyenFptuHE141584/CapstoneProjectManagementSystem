@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "/Views/Shared/Staff/_LayoutStaff.cshtml";
+    ViewData["Title"] = "Manage FinalGroup Page";
+}
+<link rel="stylesheet" href="/css/staff/staff_manageGroup.css">
+<div class="homepage" id="manageGroup">
+    <div class="settingGroup">
+        @await Html.PartialAsync("/Views/Shared/Staff/_LayoutSidebarLeftStaff.cshtml")
+        <div class="main">
+            <p class="titlePage">Manage Final Group</p>
+            <div class="settingGroupMain">
+                <h1>@TempData["count"] Students have been removed from their group</h1>
+                <table class="tableStudentList">
+                    <tr>
+                        <th>FPT Email</th>
+                        <th>Group Name (Personal) </th>                     
+                    </tr>
+                    @foreach (var item in ViewBag.studentRemovedList)
+                    {
+                        <tr>
+                            <td>@item.StudentID</td>
+                            <td>@item.GroupName</td>                           
+                        </tr>
+                    }
+                </table>
+                <form action="/ManageGroup/Index">
+                    <button type="submit" class="btnOk">Ok</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,575 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.homepage {
+    display: flex;
+    height: auto;
+}
+
+.sidebar--left {
+    flex-basis: 15%;
+    height: 93vh;
+    border: none;
+    left: 0;
+    overflow-x: hidden;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+
+.main {
+    height: auto;
+    flex-basis: 85%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(116, 112, 233, 0.05);
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+    .main > p:first-child {
+        font-weight: 600;
+        font-size: 24px;
+        margin: 24px;
+    }
+
+.formMemberHeader {
+    margin: 0 24px;
+    width: 97%;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+}
+
+.chooseTypeRequest {
+    display: flex;
+}
+
+    .chooseTypeRequest button {
+        height: 40px;
+        padding: 12px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        margin-left: 16px;
+        cursor: pointer;
+        color: rgba(28, 31, 39, 0.5);
+        background-color: rgba(28, 31, 39, 0.05);
+    }
+
+    .chooseTypeRequest .active {
+        color: #7470E9;
+        background-color: rgba(116, 112, 233, 0.2);
+    }
+
+.formRequest {
+    margin: 24px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fromGroupName {
+    width: 80%;
+    padding: 20px;
+}
+
+.group, .fromEmail, .groupName, .email, .reasonChangeFinalGroup {
+    display: flex;
+    margin: 20px 0;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+}
+/*
+#reasonChangeFinalGroup {
+    width: 500px;
+    padding: 20px;
+    font-size: 16px;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+    #reasonChangeFinalGroup:focus {
+        border: 1px solid #4472f1;
+    }*/
+
+.listnewMem {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+    .listnewMem > p:first-child {
+        margin: 60px 0;
+        color: #7470E9;
+    }
+
+.group__name, .senderEmail {
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.smallTitle {
+    font-size: 14px;
+    font-weight: 600;
+    flex-basis: 20%;
+    color: rgba(28, 31, 39, 0.5);
+}
+
+input {
+    width: 400px;
+    height: 48px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 20px;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+    input:focus {
+        border: 1px solid #4472f1;
+    }
+
+.submitForm {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submitBtn {
+    margin-bottom: 20px;
+    width: 160px;
+    height: 48px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #7470E9;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.showStaffConfirmRequest, .myRequestConfirm, .anotherRequestConfirm {
+    margin: 24px;
+    width: 97%;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.title, .titleMyRequestConfirm, .titleAnotherRequestConfirm {
+    width: 100%;
+    display: flex;
+    height: 45px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(28, 31, 39, 0.5);
+    padding: 16px;
+    border-bottom: 1px solid #ccc;
+    margin: 0 16px;
+}
+
+.informStaffConfirmRequest, .informMyRequestConfirm, .informAnotherRequestConfirm {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1C1F27;
+    padding: 16px;
+    margin: 0 16px 40px 16px;
+}
+
+    .title > p:first-child,
+    .informStaffConfirmRequest > p:first-child {
+        flex-basis: 5%;
+        padding: 0 4px;
+    }
+
+    .title > p:nth-child(2),
+    .informStaffConfirmRequest > p:nth-child(2) {
+        flex-basis: 10%;
+        padding: 0 4px;
+    }
+
+    .title > p:nth-child(3),
+    .informStaffConfirmRequest > p:nth-child(3) {
+        flex-basis: 20%;
+        padding: 0 4px;
+    }
+
+    .title > p:nth-child(4),
+    .informStaffConfirmRequest > p:nth-child(4) {
+        flex-basis: 10%;
+        padding: 0 4px;
+    }
+
+    .title > p:nth-child(5),
+    .informStaffConfirmRequest > p:nth-child(5) {
+        flex-basis: 20%;
+        padding: 0 4px;
+    }
+
+    .title > p:nth-child(6),
+    .informStaffConfirmRequest > p:nth-child(6) {
+        flex-basis: 20%;
+        padding: 0 4px;
+    }
+
+    .informStaffConfirmRequest > p:nth-child(6) {
+        padding-right: 8px;
+    }
+
+    .title > p:nth-child(7),
+    .informStaffConfirmRequest > p:nth-child(7) {
+        text-align: center;
+        flex-basis: 15%;
+        padding: 10px 4px;
+    }
+
+
+.pendingStatus, .acceptedStatus, .rejectedStatus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    padding: 8px 0;
+    border-radius: 8px;
+}
+
+.pendingStatus {
+    color: #F27227;
+    background-color: rgba(242, 114, 39, 0.2);
+}
+
+.acceptedStatus {
+    color: #23C16B;
+    background-color: rgba(35, 193, 107, 0.2);
+}
+
+.rejectedStatus {
+    color: rgba(28, 31, 39, 0.5);
+    background-color: rgba(28, 31, 39, 0.1);
+}
+
+.filterStudentConfirm {
+    margin: 32px;
+    display: flex;
+}
+
+    .filterStudentConfirm a {
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: 650;
+        font-size: 20px;
+        border-bottom: 4px solid rgba(28, 31, 39, 0.5);
+        color: rgba(28, 31, 39, 0.5);
+        width: 160px;
+        margin-right: 32px;
+        padding-bottom: 8px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .filterStudentConfirm .activeLink {
+        border-bottom: 4px solid #7470E9;
+        color: #7470E9;
+        font-weight: 650;
+        font-size: 20px;
+    }
+
+.titleMyRequestConfirm > p:first-child,
+.informMyRequestConfirm > p:first-child,
+.titleAnotherRequestConfirm > p:first-child,
+.informAnotherRequestConfirm > p:first-child {
+    flex-basis: 5%;
+    padding: 0 4px;
+}
+
+.titleMyRequestConfirm > p:nth-child(2),
+.informMyRequestConfirm > p:nth-child(2),
+.titleAnotherRequestConfirm > p:nth-child(2),
+.informAnotherRequestConfirm > p:nth-child(2) {
+    flex-basis: 15%;
+    padding: 0 4px;
+}
+
+.titleMyRequestConfirm > p:nth-child(3),
+.informMyRequestConfirm > p:nth-child(3),
+.titleAnotherRequestConfirm > p:nth-child(3),
+.informAnotherRequestConfirm > p:nth-child(3) {
+    flex-basis: 25%;
+    padding: 0 4px;
+}
+
+.titleMyRequestConfirm > p:nth-child(4),
+.informMyRequestConfirm > p:nth-child(4),
+.titleAnotherRequestConfirm > p:nth-child(4),
+.informAnotherRequestConfirm > p:nth-child(4) {
+    flex-basis: 15%;
+    padding: 0 4px;
+}
+
+.titleMyRequestConfirm > p:nth-child(5),
+.informMyRequestConfirm > p:nth-child(5),
+.titleAnotherRequestConfirm > p:nth-child(5),
+.informAnotherRequestConfirm > p:nth-child(5) {
+    flex-basis: 25%;
+    padding: 0 4px;
+}
+
+.titleMyRequestConfirm > p:nth-child(6),
+.informMyRequestConfirm > p:nth-child(6),
+.titleAnotherRequestConfirm > p:nth-child(6),
+.informAnotherRequestConfirm > p:nth-child(6),
+.anotherRequestBtn {
+    flex-basis: 15%;
+    text-align: center;
+    padding: 10px 4px;
+}
+
+.anotherRequestBtn {
+    display: flex;
+}
+
+    .anotherRequestBtn button {
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 8px;
+        height: 40px;
+        width: 100px;
+        border: none;
+        cursor: pointer;
+        margin-left: 12px;
+    }
+
+.acceptRequestBtn {
+    color: #FFFFFF;
+    background-color: #7470E9;
+}
+
+/*popup confirm submit*/
+
+.showFormConfirm {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hide-form {
+    display: none;
+}
+
+.formRequestConfirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 160px;
+    background-color: #FFFFFF;
+    position: relative;
+    left: 40%;
+    top: 35%;
+    border-radius: 8px;
+}
+
+.formNameConfirm {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0;
+}
+
+.btnSubmitConfirm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+    .btnSubmitConfirm button {
+        width: 100px;
+        height: 40px;
+        padding: 0 24px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        margin: 0 24px 24px 0;
+    }
+
+.cancelBtn {
+    background-color: rgba(28, 31, 39, 0.05);
+    color: rgba(28, 31, 39, 0.8);
+}
+
+
+.acceptBtn {
+    color: #FFFFFF;
+    background-color: #7470E9;
+}
+
+
+
+/*popup confirm accept*/
+.showAcceptRequestConfirm {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hide-form {
+    display: none;
+}
+
+.formRequestConfirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 160px;
+    background-color: #FFFFFF;
+    position: relative;
+    left: 40%;
+    top: 35%;
+    border-radius: 8px;
+}
+
+.formNameConfirm {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0;
+}
+
+.btnAcceptConfirm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+    .btnAcceptConfirm button {
+        width: 100px;
+        height: 40px;
+        padding: 0 24px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        margin: 0 24px 24px 0;
+    }
+
+.cancelAcceptRequestConfirmBtn {
+    background-color: rgba(28, 31, 39, 0.05);
+    color: rgba(28, 31, 39, 0.8);
+}
+
+
+.acceptRequestConfirmBtn {
+    color: #FFFFFF;
+    background-color: #7470E9;
+}
+
+
+/*popup confirm reject*/
+
+.showRejectRequestConfirm {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hide-form {
+    display: none;
+}
+
+.formRequestConfirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 160px;
+    background-color: #FFFFFF;
+    position: relative;
+    left: 40%;
+    top: 35%;
+    border-radius: 8px;
+}
+
+.formNameConfirm {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0;
+}
+
+.btnRejectConfirm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+    .btnRejectConfirm button {
+        width: 100px;
+        height: 40px;
+        padding: 0 24px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        margin: 0 24px 24px 0;
+    }
+
+
+
+.rejectRequestConfirmBtn {
+    color: #FFFFFF;
+    background-color: #7470E9;
+}
+
+#errorGroupName, #errorEmail{
+    color: red;
+    margin-left: 16em;
+    font-size: 16px;
+}
+
+.notifiChangeGroupRequest {
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 40px 0;
+}
+
+span {
+    color: red;
+}
+

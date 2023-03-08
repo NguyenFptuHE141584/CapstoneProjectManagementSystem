@@ -1,0 +1,46 @@
+﻿.currentSemester {
+    display: flex;
+    align-items: center;
+    padding: 0.5em 0 0 1em;
+}
+
+.semesterName {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 12px;
+}
+.links {
+    display: flex;
+    flex-direction: column;
+}
+
+    .links a {
+        display: flex;
+        height: 64px;
+        font-size: 15px;
+        align-items: center;
+        margin: 12px 24px 0 16px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.5s;
+        padding: 12px;
+        text-decoration: none;
+        color: rgba(28, 31, 39, 0.8);
+        width: 90%;
+        font-weight: 600;
+    }
+
+        .links a:hover,
+        .links a.active {
+            background-color: #7470E9;
+            color: #fff;
+        }
+
+        .links a svg {
+            padding-right: 12px;
+            width: 40px;
+        }
+        .links a i {
+            padding-right: 12px;
+            width: 40px;
+        }

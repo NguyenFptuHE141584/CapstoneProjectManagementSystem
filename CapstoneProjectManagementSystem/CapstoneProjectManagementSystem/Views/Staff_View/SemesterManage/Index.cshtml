@@ -1,0 +1,88 @@
+﻿@{
+    Layout = "/Views/Shared/Staff/_LayoutStaff.cshtml";
+    ViewData["Title"] = "Manage Semester Page";
+}
+@using CapstoneProjectManagementSystem.Models
+@model Semester
+<link rel="stylesheet" href="/css/staff/staff_semesterManage.css">
+<div class="homepage" id="manageSemester">
+    @await Html.PartialAsync("/Views/Shared/Staff/_LayoutSidebarLeftStaff.cshtml")
+    <div class="main">
+        @*<p class="titlePage">Manage Semester</p>*@
+        <div class="semester">
+            .<div class="backToSemesterMain"><i class="fa-solid fa-arrow-left"></i></div>
+            <p class ="titlePage">Current Semester</pclass>
+            @if (Model == null)
+            {
+                <div class="nonSemester">
+                    <div class="showSemester__text">
+                        <p class="smallTitle_2">The old semester has stopped. <br>Click here to start a new semester</p>
+                    </div>
+                        <button class="starSemester">Start New Semester</button>
+                </div>
+            }
+            else
+            {
+                <div class="showSemester">
+                    <p id="semesterId" hidden>@Model.SemesterID</p>
+                    <div class="showSemester__abbreviation">
+                        <p class="smallTitle">Semester Name:</p>
+                        <input id="showSemesterInputAbbreviation" type="text" value="@Model.SemesterName" disabled>
+                    </div>
+                    <p id="errorshowSemesterInputAbbreviation"></p>
+                    <div class="showSemester__code">
+                        <p class="smallTitle">Semester Code:</p>
+                        <input id="showSemesterInputCode" type="text" value="@Model.SemesterCode" disabled>
+                    </div>
+                    <p id="errorshowSemesterInputCode"></p>
+                    <div class="showSemester__star">
+                        <p class="smallTitle">Start Date:</p>
+                        <input id="showSemesterInputStart" type="date" value="@Model.StartTime.ToString("yyyy-MM-dd")" disabled>
+                    </div>
+                     <p id="errorshowSemesterInputStart"></p>
+                    <div class="showSemester__end">
+                        <p class="smallTitle">End Date:</p>
+                        <input id="showSemesterInputEnd" type="date" value="@Model.EndTime.ToString("yyyy-MM-dd")" disabled>
+                    </div>
+                    <p id="errorshowSemesterInputEnd"></p>
+                    <div class="showSemester__button">
+                        <button class="editBtn">Edit</button>
+                        <button class="saveBtn hide-btn" id="saveEditSemester">Save</button>
+                        <button id="closeSemesterBtn">Close Semester</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="createNewSemester hide-form">
+        <div class="createNewSemesterForm">
+            <p>New Semester</p>
+            <p>Please input the informations for new semester</p>
+            <div class="createNewSemesterForm__abbreviation">
+                <p class="smallTitleForm">Semester Name</p>
+                <input type="text" id="newSemesterName">
+            </div>
+            <span id="errornewSemesterName"></span>
+            <div class="createNewSemesterForm__code">
+                <p class="smallTitleForm">Semester Code</p>
+                <input type="text" id="newSemesterCode">
+            </div>
+            <span id="errornewSemesterCode"></span>
+            <div class="createNewSemesterForm__start">
+                <p class="smallTitleForm">Start Date</p>
+                <input type="date" id="newSemesterStartTime">
+            </div>
+            <span id="errornewSemesterStartTime"></span>
+            <div class="createNewSemesterForm__end">
+                <p class="smallTitleForm">End Date</p>
+                <input type="date" id="newSemesterEndTime">
+            </div>
+            <span id="errornewSemesterEndTime"></span>
+            <div class="createNewSemesterForm__button">
+                <button class="cancelBtn">Cancel</button>
+                <button class="submitBtn" id="nextBtn">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/staff/staff_semesterManage.js"></script>

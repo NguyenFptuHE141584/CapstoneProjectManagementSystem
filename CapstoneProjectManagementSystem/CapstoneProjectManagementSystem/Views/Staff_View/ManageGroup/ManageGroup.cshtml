@@ -1,0 +1,393 @@
+﻿@{
+    Layout = "/Views/Shared/Staff/_LayoutStaff.cshtml";
+    ViewData["Title"] = "Manage FinalGroup Page";
+}
+<link rel="stylesheet" href="/css/staff/staff_manageGroup.css">
+<link rel="stylesheet" href="/css/staff/staff_formEditGroup.css">
+<div class="homepage" id="manageGroup">
+    <div class="settingGroup">
+        @await Html.PartialAsync("/Views/Shared/Staff/_LayoutSidebarLeftStaff.cshtml")
+        <div class="main">
+            <p class="titlePage">Manage Final Group</p>
+            <div class="settingGroupMain">
+                <form action="/ManageGroup/Index" method="post" runat="server" defaultbutton="btnSubmit">
+                    <div class="search">
+                        <div class="inputSearch">
+                            @if (TempData["old_searchText"] == null)
+                            {
+                                <input name="searchText" type="text" id="searchInput" placeholder="Input Group name or Project Topic..." autocomplete="on">
+                            }@if (TempData["old_searchText"] != null)
+                            {
+                                <input name="searchText" type="text" id="searchInput" value="@TempData["old_searchText"]" placeholder="Input Group name or Project name ..." autocomplete="on">
+                            }
+                            <asp:Button type="submit" ID="btnSubmit" runat="server" OnClick="btnSubmit _Click" hidden="hidden">Search</asp:Button>
+                        </div>
+                        <button class="searchBtn" type="submit" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                    <div class="filterGroup">
+                        <div class="switchButton">
+                            @*switch button for showing groupname to student*@
+                            <p>Show Group Name <br />to Students</p>
+                            <label class="switch">
+                                @if (@TempData["showGroupName"].Equals("true"))
+                                {
+                                    <input type="checkbox" id="checkbox" checked>
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="checkbox">
+                                }
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        @* profession filter *@
+                        <div class="filterDropdown">
+                            <p class="smallTitle">Professional</p>
+                            @if (TempData["old_profession_id"] == null)
+                            {
+                                <select class="professionDDL" name="profession_id" id="professionalfilter">
+                                    <option value="0" selected="selected">Profession</option>
+                                    @foreach (var item in ViewBag.ProfessionList)
+                                    {
+                                        <option value="@item.ProfessionID">@item.ProfessionFullName</option>
+                                    }
+                                </select>
+                            }
+                            @if (TempData["old_profession_id"] != null)
+                            {
+                                <select class="professionDDL" name="profession_id" id="professionalfilter">
+                                    <option value="0" selected="selected">Profession</option>
+                                    @foreach (var item in ViewBag.ProfessionList)
+                                    {
+                                        if (TempData["old_profession_id"].Equals(@item.ProfessionID.ToString()))
+                                        {
+                                            <option value="@item.ProfessionID" selected="selected">@item.ProfessionFullName</option>
+                                        }
+                                        if (!TempData["old_profession_id"].Equals(@item.ProfessionID.ToString()))
+                                        {
+                                            <option value="@item.ProfessionID">@item.ProfessionFullName</option>
+                                        }
+                                    }
+                                </select>
+                            }
+                        </div>
+                        @* specialty filter *@
+                        <div class="filterDropdown">
+                            <p class="smallTitle">Specialty</p>
+                            @if (TempData["old_specialty_id"] == null)
+                            {
+                                <select class="specialtyDDL" name="specialty_id" id="specialtyfilter">
+                                    <option value="0" selected="selected">Specialty</option>
+                                </select>
+                            }
+                            @if (TempData["old_specialty_id"] != null && ViewBag.SpecialtyList == null)
+                            {
+                                <select class="specialtyDDL" name="specialty_id" id="specialtyfilter">
+                                    <option value="0" selected="selected">Specialty</option>
+                                </select>
+                            }
+                            @if (TempData["old_specialty_id"] != null && ViewBag.SpecialtyList != null)
+                            {
+                                <p hidden="hidden" class="passSpecialtyId" id="@TempData["old_specialty_id"]"></p>
+                                <select class="specialtyDDL" name="specialty_id" id="specialtyfilter">
+                                    <option value="0">Specialty</option>
+                                    @foreach (var item in ViewBag.SpecialtyList)
+                                    {
+                                        if (TempData["old_specialty_id"].Equals(@item.SpecialtyID.ToString()))
+                                        {
+                                            <option value="@item.SpecialtyID" selected="selected">@item.SpecialtyFullName</option>
+                                        }
+                                        if (!TempData["old_specialty_id"].Equals(@item.SpecialtyID.ToString()))
+                                        {
+                                            <option value="@item.SpecialtyID">@item.SpecialtyFullName</option>
+                                        }
+                                    }
+                                </select>
+                            }
+                        </div>
+                        <button type="button" class="btnExport" id="btnExport">Export To Excel</button>
+                        <button type="button" class="btnImport" id="btnImport">Import Data</button>
+                    </div>
+                </form>
+                <div class="manageGroup">
+                    <div class="manageGroup__left">
+                        <div class="manageGroup__left--button">
+                            <button class="lackofMember activeBtn">Lack of members</button>
+                            <button class="fullMember">Full members</button>
+                        </div>
+                        <div class="manageGroup__left--mainlackOfMem">
+                            <div class="titleManageGroup">
+                                <p>Group Name</p>
+                                <p>Project Name</p>
+                                <p>Speciality</p>
+                                <p>Member</p>
+                                <p>Created At</p>
+                            </div>
+                            <div class="lackOfMemInfo">
+                                @if (ViewBag.LackOfMemberFinalGroupList != null)
+                                {
+                                    @foreach (var item in ViewBag.LackOfMemberFinalGroupList)
+                                    {
+                                        <div class="informGroup">
+                                            <p>@item.GroupName</p>
+                                            <a href="#" class="nameProject" id="group_@item.FinalGroupID">@item.ProjectEnglishName</a>
+                                            <p>@item.SpecialtyFullName</p>
+                                            <p>@item.NumberOfMember / @item.MaxMember</p>
+                                            <p>@item.CreatedAt</p>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="manageGroup__left--mainFullMem hide-form">
+                            <div class="titleManageGroup">
+                                <p>Group Name</p>
+                                <p>Project Name</p>
+                                <p>Speciality</p>
+                                <p>Member</p>
+                                <p>Created At</p>
+                            </div>
+                            <div class="fullMemInfo">
+                                @if (ViewBag.FullMemberFinalGroupList != null)
+                                {
+                                    @foreach (var item in ViewBag.FullMemberFinalGroupList)
+                                    {
+                                        <div class="informGroup">
+                                            <p>@item.GroupName</p>
+                                            <a href="#" class="nameProject" id="group_@item.FinalGroupID">@item.ProjectEnglishName</a>
+                                            <p>@item.SpecialtyFullName</p>
+                                            <p>@item.NumberOfMember / @item.MaxMember</p>
+                                            <p>@item.CreatedAt</p>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="manageGroup__right">
+                        <div class="notInGroup">
+                            <p>Students that not have Group</p>
+                            <div class="notInGroupFirstLine">
+                                <div class="searchNotInGroup">
+                                    <div class="inputSearchNotInGroup">
+                                        <input type="text" placeholder="Search in below list" id="searchStudent">
+                                    </div>
+                                    <button class="searchBtnUser"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                                @if (TempData["old_specialty_id"] != null && ViewBag.SpecialtyList != null && (!TempData["old_specialty_id"].Equals("0")))
+                                {
+                                    <button type="button" class="btnGrouping" id="btnGrouping">Grouping</button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btnGrouping" id="btnGrouping" disabled>Grouping</button>
+                                }
+                            </div>
+                        </div>
+                        <div class="showMemberNotInGroup">
+                            @if (ViewBag.StudentList != null)
+                            {
+                                @foreach (var item in ViewBag.StudentList)
+                                {
+                                    <div class="memberNotInGroup">
+                                        <img src="@item.User.Avatar" alt="Avatar">
+                                        <div class="memberInfo">
+                                            <a href="#">@item.User.FptEmail</a>
+                                            <p>@item.Specialty.SpecialtyFullName</p>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="showForm hide-form">
+            <div class="formSubmitRegistration">
+                <p class="formName">Edit Group Informations</p>
+                <div class="form" id="">
+                    <div class="categorize">
+                        <div class="selectedSpe">
+                            <div class="englishTitle">
+                                <p class="titleForm">Group Name <span>*</span></p>
+                                <div class="addnewMem">
+                                    <input id="groName" class="inputContent" type="text"
+                                           required value="" placeholder="Input group name here...">
+                                    <div id="btnSave">Save </div>
+                                </div>
+                            </div>
+                            <div class="selectedSpe--left">
+                                <p class="content">Profession: </p>
+                                <p class="text" id="proName"></p>
+                            </div>
+
+                            <div class="selectedSpe--right">
+                                <p class="content">Specialty: </p>
+                                <p class="text" id="specName"></p>
+                            </div>
+
+                            <div class="englishTitle">
+                                <p class="titleForm">English Title: </p>
+                                <p class="text" id="engName"></p>
+                            </div>
+
+                            <div class="shortTitle">
+                                <div class="shortTitle--ele">
+                                    <p class="titleForm">Abbreviations: </p>
+                                    <p class="text" id="abbreName"></p>
+                                </div>
+                                <div class="shortTitle--ele">
+                                    <p class="titleForm">Vietnamese Title: </p>
+                                    <p class="text" id="vietName"></p>
+                                </div>
+                            </div>
+                            <div class="member">
+                                @* Team member here *@
+                            </div>
+
+                            <div class="addMem">
+                                <p id="abc" class="titleForm">Add member</p>
+                                <div class="addnewMem">
+                                    <input type="text" id="txtMember" placeholder="Example@fpt.edu.vn">
+                                    <div id="btnAdd">Add</div>
+                                </div>
+                                <p id="noti" style="color:red"></p>
+                            </div>
+
+                            <div class="buttonCreate">
+                                <button type="button" id="btnDelGroup" class="btnDelGroup">Delete Group</button>
+                                <button class="btnCre" type="reset" id="btnDiscard">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*confirm popup for add button*@
+        <div class="showJoinForm hide-form">
+            <div class="YNpopup">
+                <p>Are you sure that you want to add this student to your group?</p>
+                <div class="YNbutton">
+                    <button class="noBtnJoin" type="reset">Cancel</button>
+                    <button class="yesBtnJoin" type="button">Yes</button>
+                </div>
+            </div>
+        </div>
+        @*confirm popup for delete member button*@
+        <div class="showDeleteForm hide-form">
+            <div class="YNpopup">
+                <p>Are you sure that you want to remove this member from the group?</p>
+                <div class="YNbutton">
+                    <button class="noBtnDelete" type="reset">Cancel</button>
+                    <button class="yesBtnDelete" type="button">Yes</button>
+                </div>
+            </div>
+        </div>
+        @*confirm popup for delete group button*@
+        <div class="showDeleteGroupForm hide-form">
+            <div class="YNpopup">
+                <p>Are you sure that you want to delete this group and all of its information?</p>
+                <div class="YNbutton">
+                    <button class="noBtnDeleteGroup" type="reset">Cancel</button>
+                    <button class="yesBtnDeleteGroup" type="button">Yes</button>
+                </div>
+            </div>
+        </div>
+        @*confirm popup for grouping button*@
+        <div class="showGroupingForm hide-form">
+            <div class="YNpopup">
+                <p>Specialty: @ViewBag.StudentList?[0]?.Specialty.SpecialtyFullName</p>
+                @if (ViewBag.StudentList != null)
+                {
+                    var stuList = ViewBag.StudentList;
+                    var count = stuList.Count;
+                    <p>@count students don't have any groups yet.</p>
+                }
+                <p>Do you want to automatically divide these students into groups ?</p>
+                <div class="YNbutton">
+                    <button class="noBtnGrouping" type="reset">Cancel</button>
+                    <button class="yesBtnGrouping" type="button">Yes</button>
+                </div>
+            </div>
+        </div>
+        @*popup after grouping*@
+        <div class="showFinishGroupingForm hide-form">
+            <div class="YNpopup">
+                <p>Grouping Successfully !</p>
+                <p class="finishGroupingText"></p>
+                <div class="YNbutton_2">
+                    <button class="yesBtnFinishGrouping" type="button">Ok</button>
+                </div>
+            </div>
+        </div>
+
+        @*choose file to export*@
+        <form action="/ManageGroup/ExportAllGroupToExcel" class="formExport1" id="formExport1" hidden="hidden">
+            <input id="inputExport1" name="semesterId" hidden />
+        </form>
+        <form action="/ManageGroup/ExportAllStudentToExcel" class="formExport2" id="formExport2" hidden="hidden">
+            <input id="inputExport2" name="semesterId" hidden />
+        </form>
+        <div class="showExportForm hide-form">
+            <div class="YNpopup_Export">
+                <div class="export">
+                    <div class="filterDropdown">
+                        <p class="smallTitle">Semester</p>
+                        <select class="semesterDDL" name="semester_id" id="semesterfilter">
+                            @foreach (var item in ViewBag.SemesterList)
+                            {
+                                <option value="@item.SemesterID">@item.SemesterName</option>
+                            }
+                        </select>
+                    </div>
+                    @*1*@
+                    <div class="export_1">
+                        <p>All Capstone Project/ Thesis Groups Informations: </p>
+                        <button class="exportAllGroup" type="button">Export</button>
+                    </div>
+                    @*2*@
+                    <div class="export_2">
+                        <p>All Students With Capstone Project/ Thesis  Name: </p>
+                        <button class="exportAllStudent" type="button">Export</button>
+                    </div>
+                </div>
+                <div class="YNbutton_2">
+                    <button class="noBtnExport" type="reset">Cancel</button>
+                </div>
+            </div>
+        </div>
+        @*choose file to import*@
+        <form action="/ManageGroup/ExportTemplate1" class="formExport3" id="formExport3" hidden="hidden"></form>
+        <form action="/ManageGroup/ExportTemplate2" class="formExport4" id="formExport4" hidden="hidden"></form>
+        <div class="showImportForm hide-form">
+            <div class="YNpopup_Import">
+                <div class="import">
+                    @* 1 *@
+                    <div class="import_1">
+                        <p>Import Student List: </p>
+                        <form action="/ManageGroup/ImportStudentList" method="post" enctype="multipart/form-data" id="formImportStudentList">
+                            <button class="getTemplate1" type="button">GetTemplate</button>
+                            <input type="file" name="file" id="fileStudentList"/>
+                            <input type="button" id="btnImportStudentList" value="Import" />
+                        </form>
+                    </div>
+                    @* 2 *@
+                    <div class="import_2">
+                        <p>Import Check Condition: </p>
+                        <form action="/ManageGroup/ImportCheckCondition" method="post" enctype="multipart/form-data" id="formImportCheckCondition">
+                            <button class="getTemplate2" type="button">GetTemplate</button>
+                            <input type="file" name="file" id="fileCheckCondition"/>
+                            <input type="button" id="btnImportCheckCondition" value="Import" />
+                        </form>
+                    </div>
+                </div>
+                <div class="YNbutton_2">
+                    <button class="noBtnImport" type="reset">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/staff/staff_manageGroup.js"></script>
+<script src="/js/staff/staff_formEditGroup.js"></script>
